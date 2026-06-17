@@ -385,11 +385,95 @@
     @media(max-width:1040px){.hero,.grid-2{grid-template-columns:1fr}.hero,.hero-sculpture{min-height:auto}.grid-4{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}.nav{align-items:flex-start;border-radius:32px}.nav-links{display:none}.section-title{align-items:flex-start;flex-direction:column}.hero-copy{padding:42px}}
     @media(max-width:680px){.page{width:min(100% - 22px,1180px);padding-top:64px}.hero-copy{padding:30px}.grid-4,.grid-3,.mini-dashboard,.visual-grid,.visual-stack{grid-template-columns:1fr}.skill-line{grid-template-columns:1fr;gap:8px}.hero-actions{flex-direction:column}.neo-btn{justify-content:center}.contact-strip{flex-direction:column;align-items:flex-start}.scroll-cue{display:none}.progress-shell{top:8px}.brand h3{font-size:16px}.logo{width:48px;height:48px}.modal-card{padding:24px}.contact-item{flex-direction:column;align-items:flex-start}.contact-item strong{text-align:left}footer{align-items:flex-start}.footer-actions{width:100%;flex-direction:column}.footer-actions .neo-btn{width:100%}}
 
+
+    /* Responsive stability patch: mobile alignment, touch motion and loader */
+    .mobile-contact{display:none;flex:0 0 auto;padding:12px 15px;font-size:13px}
+    .hero>*,.grid-2>*,.grid-3>*,.grid-4>*,.visual-grid>*,.visual-stack>*{min-width:0}
+    img,svg,canvas{display:block;max-width:100%}
+
+    .loader{padding:22px;background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.92),transparent 34%),radial-gradient(circle at 78% 76%,rgba(190,201,216,.52),transparent 36%),linear-gradient(145deg,#e9edf4,#dce3ed)}
+    .loader-card{width:min(330px,calc(100vw - 44px));height:auto;min-height:300px;padding:34px 28px;border-radius:42px;display:flex;flex-direction:column;justify-content:center;gap:24px;text-align:center;box-shadow:30px 30px 65px rgba(79,94,117,.58),-30px -30px 65px rgba(255,255,255,.98),inset 1px 1px 0 rgba(255,255,255,.76)}
+    .loader-orbit{width:126px;height:126px;margin:auto;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#f2f5fa,#d9e0ea);box-shadow:18px 18px 36px rgba(103,117,139,.48),-18px -18px 36px rgba(255,255,255,.96),inset 8px 8px 20px rgba(255,255,255,.72),inset -8px -8px 20px rgba(104,119,141,.12);position:relative;animation:loaderFloat 1.55s var(--ease) infinite alternate}
+    .loader-orbit::before{content:"";position:absolute;inset:-13px;border:3px solid transparent;border-top-color:var(--accent);border-right-color:rgba(49,70,90,.28);border-radius:50%;animation:loaderSpin 1.35s linear infinite}
+    .loader-orbit strong{font-size:44px;letter-spacing:-.09em;text-shadow:6px 6px 12px rgba(120,134,155,.34),-5px -5px 10px rgba(255,255,255,.9)}
+    .loader-copy{display:grid;gap:7px}.loader-copy b{font-size:20px;letter-spacing:-.04em}.loader-copy span{font-size:12px;color:var(--muted);font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    .loader-track{height:12px;border-radius:999px;padding:3px;background:var(--surface);box-shadow:var(--inner);overflow:hidden}.loader-track i{display:block;height:100%;width:36%;border-radius:999px;background:linear-gradient(90deg,#b9c4d1,#31465a,#b9c4d1);animation:loaderTrack 1.25s var(--ease) infinite}
+    @keyframes loaderSpin{to{transform:rotate(360deg)}}
+    @keyframes loaderFloat{from{transform:translateY(4px) scale(.98)}to{transform:translateY(-5px) scale(1.025)}}
+    @keyframes loaderTrack{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+
+    .touch-pressed{transform:scale(.985)!important;box-shadow:var(--inner-deep)!important}
+    .contact-item{transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+
+    @media (hover:none),(pointer:coarse){
+      .cursor-glow{display:none}
+      .card:hover,.neo-panel:hover,.skill-chip:hover,.flow-row:hover,.contact-item:hover{transform:none}
+    }
+
+    @media(max-width:1040px){
+      .page{width:min(100% - 28px,820px)}
+      .nav{top:18px;align-items:center;border-radius:28px;margin-bottom:34px;padding:12px 13px}
+      .nav-links{display:none}.mobile-contact{display:inline-flex;width:auto}
+      .hero{gap:24px}.hero-copy{padding:40px}.hero-sculpture{padding:26px}
+      .visual-grid{grid-template-columns:1fr}.visual-stack{grid-template-columns:1fr 1fr}
+      .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .section-title{margin-bottom:20px}
+    }
+
+    @media(max-width:680px){
+      html{scroll-padding-top:88px}
+      body{background:linear-gradient(145deg,#e8edf4,#dfe6ef);overscroll-behavior-y:none}
+      .noise{opacity:.035}.floaters{opacity:.34}.cursor-glow{display:none}
+      .page{width:calc(100% - 20px);padding:56px 0 28px}
+      .progress-shell{width:calc(100% - 24px);height:10px;top:7px}
+      .nav{top:21px;min-height:68px;margin-bottom:26px;padding:10px;border-radius:24px;gap:10px;box-shadow:14px 14px 30px rgba(101,115,137,.48),-14px -14px 30px rgba(255,255,255,.96)}
+      .brand{min-width:0;gap:10px}.brand>span:last-child{min-width:0}.brand strong{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.brand small{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .logo{width:44px;height:44px;flex:0 0 44px}.mobile-contact{padding:11px 12px;font-size:12px;width:auto;min-height:44px}
+      .hero{display:flex;flex-direction:column;gap:20px;min-height:auto}.hero-copy,.hero-sculpture{min-height:auto;border-radius:30px}
+      .hero-copy{padding:30px 24px}.hero-copy h1{font-size:clamp(48px,15vw,70px);line-height:.9;margin:20px 0 16px;overflow-wrap:anywhere}.role{font-size:clamp(22px,7vw,31px);line-height:1.05}.hero-copy p{font-size:16px;line-height:1.65}
+      .eyebrow{font-size:10px;letter-spacing:.1em;padding:10px 12px;white-space:normal;line-height:1.35}
+      .tag-row{gap:10px;margin-top:22px}.tag{padding:11px 13px;font-size:12px;box-shadow:9px 9px 18px rgba(115,129,150,.36),-9px -9px 18px rgba(255,255,255,.92)}
+      .hero-actions{display:grid;grid-template-columns:1fr;gap:13px;margin-top:26px}.hero-actions .neo-btn{width:100%;justify-content:center;min-height:52px}
+      .hero-sculpture{padding:20px}.profile-slab{min-height:290px;border-radius:28px}.profile-slab::after{width:220px;height:220px}.profile-ring{width:190px;height:190px}.initials{font-size:72px}
+      .mini-dashboard{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mini-card{padding:17px 14px;min-height:128px;border-radius:21px}.mini-card b{font-size:35px}.mini-card span{font-size:11px}.mini-card .icon{font-size:18px;right:12px;top:11px}
+      .contact-strip{margin-top:2px;padding:17px;gap:13px;align-items:stretch}.contact-strip>div{width:100%;display:flex;justify-content:space-between;gap:12px;align-items:center}.contact-strip strong{text-align:right;font-size:13px;overflow-wrap:anywhere}
+      section{margin-top:34px;scroll-margin-top:94px}.section-title{padding:0 4px;gap:12px}.section-title h2{font-size:clamp(35px,11vw,48px);line-height:.98}.section-title p{font-size:14px;line-height:1.6}
+      .grid-2,.grid-3,.grid-4,.visual-grid,.visual-stack{grid-template-columns:1fr;gap:18px}
+      .card{padding:23px;border-radius:26px;box-shadow:16px 16px 34px rgba(91,106,128,.52),-16px -16px 34px rgba(255,255,255,.96),inset 1px 1px 0 rgba(255,255,255,.68)}
+      .chart-card{min-height:auto}.chart-shell{height:250px;padding:18px}.chart-grid{inset:18px}.bars{gap:7px}.bar span{font-size:9px;padding-top:9px;transform:translateY(100%) rotate(-38deg);transform-origin:left top}
+      .skill-line{grid-template-columns:1fr 44px;gap:8px}.skill-line b{grid-column:1/-1}.track{height:16px}
+      .capability{min-height:210px}.score-orb{width:78px;height:78px;font-size:24px}.capability h3,.venture h3{font-size:23px}
+      .impact-card{min-height:190px;gap:14px}.impact-card b{font-size:clamp(66px,22vw,94px);margin-top:6px}.impact-card p{font-size:14px}
+      .neo-axis{height:235px;padding:16px}.neo-axis::before{inset:16px}.neo-ticks{left:18px;right:18px;bottom:10px;font-size:8px}.chart-caption{display:grid;gap:12px}.chart-caption b{font-size:26px}
+      .viz-mini{grid-template-columns:1fr;gap:12px}.viz-mini .mini-card{min-height:100px}
+      .donut-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.donut{height:155px}.donut::before{width:92px;height:92px}.donut::after{width:63px;height:63px}.donut span{font-size:10px}
+      .gauge{height:175px}.gauge::before{width:195px;height:195px}.gauge::after{width:135px;height:135px}.gauge-value b{font-size:39px}.comparison-row{grid-template-columns:78px minmax(0,1fr) 45px;gap:8px;font-size:11px}
+      .flow-row{grid-template-columns:auto minmax(0,1fr);padding:14px;gap:11px}.flow-row em{grid-column:2;justify-self:start;font-size:11px}.flow-icon{width:46px;height:46px;border-radius:15px}.flow-row b{font-size:14px}.flow-row small{font-size:11px;line-height:1.45}
+      .timeline{padding-left:8px}.timeline::before{left:11px;width:10px}.timeline-item{margin-left:28px;padding:22px;border-radius:24px}.timeline-item::before{left:-36px;width:24px;height:24px}.timeline-item h3{font-size:23px}
+      .skill-cloud{gap:11px}.skill-chip{padding:14px 16px;border-radius:18px;font-size:12px;box-shadow:10px 10px 20px rgba(111,124,145,.4),-10px -10px 20px rgba(255,255,255,.94)}
+      .quote{padding:28px 23px;border-radius:30px}.quote .mark{font-size:60px}.quote p{font-size:clamp(26px,8vw,36px)}
+      footer{padding:24px 20px;border-radius:28px;gap:20px}.footer-copy strong{font-size:20px}.footer-copy span{font-size:13px}.footer-actions{width:100%;display:grid;grid-template-columns:1fr;gap:11px}.footer-actions .neo-btn{width:100%}
+      .modal{place-items:end center;padding:10px}.modal-card{width:100%;max-height:calc(100dvh - 20px);overflow:auto;border-radius:30px 30px 24px 24px;padding:25px 20px 22px;box-shadow:0 -20px 60px rgba(48,61,80,.34),-16px -16px 34px rgba(255,255,255,.55)}.modal-card h2{font-size:clamp(36px,11vw,48px);padding-right:48px}.close{right:14px;top:14px}.contact-grid{gap:13px}.contact-item{padding:17px;border-radius:20px;flex-direction:column;align-items:flex-start}.contact-item strong{text-align:left;font-size:16px;overflow-wrap:anywhere}
+      .reveal{transform:translateY(24px) scale(.99);filter:blur(4px);transition-duration:.68s}
+    }
+
+    @media(max-width:390px){
+      .page{width:calc(100% - 14px)}.nav{padding:9px}.brand strong{font-size:13px}.brand small{font-size:9px}.mobile-contact{font-size:0;width:44px;min-width:44px;padding:0}.mobile-contact::after{content:"↗";font-size:18px}
+      .hero-copy{padding:27px 19px}.hero-sculpture{padding:16px}.mini-dashboard{grid-template-columns:1fr}.mini-card{min-height:112px}.donut-grid{grid-template-columns:1fr}.contact-strip>div{display:grid;gap:4px}.contact-strip strong{text-align:left}
+      .chart-shell{height:230px}.bars{gap:5px}.bar span{font-size:8px}.skill-chip{width:100%;text-align:center}
+    }
+
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none;filter:none}}
   </style>
 </head>
 <body>
-  <div class="loader" aria-hidden="true"><div class="loader-card"><strong>SY</strong></div></div>
+  <div class="loader" aria-hidden="true">
+    <div class="loader-card">
+      <div class="loader-orbit"><strong>SY</strong></div>
+      <div class="loader-copy"><b>Building the experience</b><span>People · Data · Technology</span></div>
+      <div class="loader-track"><i></i></div>
+    </div>
+  </div>
   <div class="noise"></div>
   <div class="cursor-glow" aria-hidden="true"></div>
   <div class="progress-shell" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
@@ -409,6 +493,7 @@
         <a class="pill-link" href="#ventures">Ventures</a>
         <button class="neo-btn" data-open-contact>Contact ↗</button>
       </div>
+      <button class="neo-btn mobile-contact" data-open-contact aria-label="Open contact details">Contact ↗</button>
     </nav>
 
     <section id="about" class="hero">
@@ -690,15 +775,27 @@
     const modal = document.getElementById('contactModal');
     const navLinks = [...document.querySelectorAll('.pill-link')];
 
-    window.addEventListener('load', () => {
-      setTimeout(() => document.body.classList.add('loaded'), 420);
-      animateCounters();
-    });
+    const loaderStartedAt = performance.now();
+    let loadingFinished = false;
+    function finishLoading(){
+      if(loadingFinished) return;
+      loadingFinished = true;
+      const elapsed = performance.now() - loaderStartedAt;
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+        document.querySelectorAll('.hero .reveal, .nav.reveal').forEach(el => el.classList.add('is-visible'));
+        animateCounters();
+      }, Math.max(0, 1150 - elapsed));
+    }
+    window.addEventListener('load', finishLoading, {once:true});
+    setTimeout(finishLoading, 3200);
 
-    document.addEventListener('pointermove', (e) => {
-      root.style.setProperty('--mx', e.clientX + 'px');
-      root.style.setProperty('--my', e.clientY + 'px');
-    }, {passive:true});
+    if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+      document.addEventListener('pointermove', (e) => {
+        root.style.setProperty('--mx', e.clientX + 'px');
+        root.style.setProperty('--my', e.clientY + 'px');
+      }, {passive:true});
+    }
 
     function updateProgress(){
       const max = document.documentElement.scrollHeight - innerHeight;
@@ -715,7 +812,7 @@
           if(entry.target.classList.contains('chart-card')) entry.target.classList.add('is-visible');
         }
       });
-    }, {threshold:.15, rootMargin:'0px 0px -80px 0px'});
+    }, {threshold:.06, rootMargin:'0px 0px -36px 0px'});
     document.querySelectorAll('.reveal,.chart-card').forEach(el => revealObserver.observe(el));
 
     const sectionObserver = new IntersectionObserver((entries)=>{
@@ -752,29 +849,43 @@
       counters.forEach(c=>obs.observe(c));
     }
 
-    document.querySelectorAll('.tilt-card').forEach(card => {
-      card.addEventListener('pointermove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - .5;
-        const y = (e.clientY - rect.top) / rect.height - .5;
-        card.style.transform = `perspective(1200px) rotateX(${(-y*6.5).toFixed(2)}deg) rotateY(${(x*8).toFixed(2)}deg) translateY(-6px) scale(1.008)`;
+    const desktopMotion = matchMedia('(hover:hover) and (pointer:fine) and (min-width:900px)');
+    if(desktopMotion.matches){
+      document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('pointermove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - .5;
+          const y = (e.clientY - rect.top) / rect.height - .5;
+          card.style.transform = `perspective(1200px) rotateX(${(-y*6).toFixed(2)}deg) rotateY(${(x*7).toFixed(2)}deg) translateY(-6px) scale(1.005)`;
+        });
+        card.addEventListener('pointerleave', () => card.style.transform = '');
       });
-      card.addEventListener('pointerleave', () => card.style.transform = '');
-    });
 
-    const parallaxItems = document.querySelectorAll('.card, .neo-panel, .timeline-item, .skill-chip');
-    function parallaxScroll(){
-      const vh = innerHeight;
-      parallaxItems.forEach((item, i) => {
-        const rect = item.getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
-        const dist = (center - vh / 2) / vh;
-        const lift = Math.max(Math.min(-dist * 10, 10), -10);
-        item.style.setProperty('--scroll-lift', `${lift.toFixed(2)}px`);
-      });
+      const parallaxItems = document.querySelectorAll('.card, .neo-panel, .timeline-item, .skill-chip');
+      let parallaxQueued = false;
+      function parallaxScroll(){
+        if(parallaxQueued) return;
+        parallaxQueued = true;
+        requestAnimationFrame(() => {
+          const vh = innerHeight;
+          parallaxItems.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            const center = rect.top + rect.height / 2;
+            const dist = (center - vh / 2) / vh;
+            const lift = Math.max(Math.min(-dist * 8, 8), -8);
+            item.style.setProperty('--scroll-lift', `${lift.toFixed(2)}px`);
+          });
+          parallaxQueued = false;
+        });
+      }
+      addEventListener('scroll', parallaxScroll, {passive:true});
+      parallaxScroll();
     }
-    addEventListener('scroll', parallaxScroll, {passive:true});
-    parallaxScroll();
+
+    document.querySelectorAll('.neo-btn,.pill-link,.card,.skill-chip,.contact-item').forEach(el => {
+      el.addEventListener('pointerdown', () => el.classList.add('touch-pressed'), {passive:true});
+      ['pointerup','pointercancel','pointerleave'].forEach(type => el.addEventListener(type, () => el.classList.remove('touch-pressed'), {passive:true}));
+    });
 
     document.querySelectorAll('.magnetic,.neo-btn,.pill-link,.card,.skill-chip').forEach(el => {
       el.addEventListener('click', function(e){
@@ -790,10 +901,10 @@
       });
     });
 
-    document.querySelectorAll('[data-open-contact]').forEach(btn => btn.addEventListener('click',()=>modal.classList.add('open')));
-    document.querySelector('[data-close-contact]').addEventListener('click',()=>modal.classList.remove('open'));
-    modal.addEventListener('click',(e)=>{ if(e.target === modal) modal.classList.remove('open'); });
-    document.addEventListener('keydown',(e)=>{ if(e.key === 'Escape') modal.classList.remove('open'); });
+    document.querySelectorAll('[data-open-contact]').forEach(btn => btn.addEventListener('click',()=>{modal.classList.add('open');document.body.style.overflow='hidden';}));
+    document.querySelector('[data-close-contact]').addEventListener('click',()=>{modal.classList.remove('open');document.body.style.overflow='';});
+    modal.addEventListener('click',(e)=>{ if(e.target === modal){modal.classList.remove('open');document.body.style.overflow='';} });
+    document.addEventListener('keydown',(e)=>{ if(e.key === 'Escape'){modal.classList.remove('open');document.body.style.overflow='';} });
 
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
